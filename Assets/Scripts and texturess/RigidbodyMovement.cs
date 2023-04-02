@@ -12,7 +12,7 @@ public class RigidbodyMovement : MonoBehaviour
 
 	private bool isGrounded; // Whether the Rigidbody is currently grounded
 
-	void Update ()
+	void FixedUpdate ()
 	{
 		// Check if the Rigidbody is grounded
 		isGrounded = Physics2D.OverlapCircle(new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), 0.45f, groundLayers);
@@ -43,6 +43,9 @@ public class RigidbodyMovement : MonoBehaviour
 			//rigidbodys.velocity = new Vector2(Mathf.Clamp(rigidbodys.velocity.x, -maxforce*2, maxforce*2), rigidbodys.velocity.y);
 		}
 
+	}
+	private void Update ()
+	{
 
 		// If the space bar is pressed and the Rigidbody is grounded, add a force to make it jump
 		if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
